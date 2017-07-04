@@ -34,7 +34,6 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>User</th>
         <th></th>
       </tr>
     </thead>
@@ -43,7 +42,6 @@
 <% @stores.each do |store| %>
         <tr data-link="<%= store_path(store) %>">
           <td><%= store.name %></td>
-          <td><%= store.user %></td>
           <td class="buttons">
             <%= link_to edit_store_path(store), class: 'btn btn-sm btn-primary' do %>
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>

@@ -43,7 +43,7 @@
 <% @sellers.each do |seller| %>
         <tr data-link="<%= seller_path(seller) %>">
           <td><%= seller.name %></td>
-          <td><%= seller.store %></td>
+          <td><%= seller.store.name %></td>
           <td class="buttons">
             <%= link_to edit_seller_path(seller), class: 'btn btn-sm btn-primary' do %>
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>

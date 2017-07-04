@@ -33,6 +33,7 @@
   <table class="table table-hover list">
     <thead>
       <tr>
+        <th>Store</th>
         <th>Name</th>
         <th>Start date</th>
         <th>End date</th>
@@ -44,6 +45,7 @@
     <tbody>
 <% @targets.each do |target| %>
         <tr data-link="<%= target_path(target) %>">
+          <td><%= target.store.name %></td>
           <td><%= target.name %></td>
           <td><%= target.start_date %></td>
           <td><%= target.end_date %></td>

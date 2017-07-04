@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :seller do
     name "MyString"
-store nil
+	association :store, factory: :store
   end
 
 end

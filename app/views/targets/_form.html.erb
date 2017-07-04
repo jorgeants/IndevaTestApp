@@ -4,10 +4,32 @@
 	  <%= f.error_notification %>
 
 	  <div class="form-inputs">
+	  	<%= f.association :store %>
 	    <%= f.input :name %>
 	    <%= f.input :start_date %>
 	    <%= f.input :end_date %>
-	    <%= f.input :value_cents %>
+	    <div class="form-group string optional value">
+				<%= f.label :value %>
+	    	<div class="input-group">
+		      <span class="currency_symbol input-group-addon">$</span>
+		    	<%= f.input :value, wrapper: false, label: false %>
+	    	</div>
+	    </div>
+	    <div class="panel panel-default">
+	      <div class="panel-heading">
+	        <h3 class="panel-title">Days</h3>
+	      </div>
+	      <div class="panel-body">
+	        <div id="day_targets">
+	            <%= f.simple_fields_for :day_targets do |day_target| %>
+	              <%= render 'day_target_fields', f: day_target %>
+	            <% end %>
+	            <div class="links">
+	              <%= link_to_add_association 'Add day', f, :day_targets, class: 'btn btn-default' %>
+	            </div>
+	        </div>
+	      </div>
+	    </div>
 	  </div>
 
 	  <div class="form-actions">

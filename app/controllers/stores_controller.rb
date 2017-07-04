@@ -4,7 +4,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
-    @stores = Store.select(:name, :user_id).paginate(:page => params[:page], :per_page => 10)
+    @stores = current_user.stores.select(:id, :name, :user_id).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /stores/1
@@ -25,6 +25,7 @@ class StoresController < ApplicationController
   # POST /stores.json
   def create
     @store = Store.new(store_params)
+    @store.user = current_user
 
     respond_to do |format|
       if @store.save

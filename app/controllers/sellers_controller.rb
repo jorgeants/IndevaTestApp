@@ -4,7 +4,7 @@ class SellersController < ApplicationController
   # GET /sellers
   # GET /sellers.json
   def index
-    @sellers = Seller.select(:name, :store_id).paginate(:page => params[:page], :per_page => 10)
+    @sellers = Seller.select(:id, :name, :store_id).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /sellers/1

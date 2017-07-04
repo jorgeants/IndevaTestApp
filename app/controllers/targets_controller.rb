@@ -4,7 +4,7 @@ class TargetsController < ApplicationController
   # GET /targets
   # GET /targets.json
   def index
-    @targets = Target.select(:name, :start_date, :end_date, :value_cents, :value_currency).paginate(:page => params[:page], :per_page => 10)
+    @targets = Target.select(:id, :name, :start_date, :end_date, :value_cents, :value_currency, :store_id).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /targets/1
@@ -69,6 +69,6 @@ class TargetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def target_params
-      params.require(:target).permit(:name, :start_date, :end_date, :value)
+      params.require(:target).permit(:name, :start_date, :end_date, :value, :store_id, day_targets_attributes: [:day, :value])
     end
 end
