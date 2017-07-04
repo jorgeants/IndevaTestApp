@@ -1,0 +1,44 @@
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-system" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="/">
+    IndevaTestApp
+  </a>
+</div>
+
+<% if user_signed_in? %>
+<div class="collapse navbar-collapse" id="navbar-system">
+  <ul class="nav navbar-nav">
+    <li class="<%= current_page?(root_path) ? 'active' : '';%>"><%= link_to 'Dashboard <span class="sr-only">(current)</span>'.html_safe, root_path %></li>
+      <li class="<%= current_page?(stores_path) ? 'active' : '';%>"><%= link_to 'Stores <span class="sr-only">(current)</span>'.html_safe, stores_path %></li>
+      <li class="<%= current_page?(sellers_path) ? 'active' : '';%>"><%= link_to 'Sellers <span class="sr-only">(current)</span>'.html_safe, sellers_path %></li>
+      <li class="<%= current_page?(targets_path) ? 'active' : '';%>"><%= link_to 'Targets <span class="sr-only">(current)</span>'.html_safe, targets_path %></li>
+  </ul>
+  
+  <ul class="nav navbar-nav navbar-right">
+
+    <li id="dropdown-user" class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <%= current_user.name %> <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li>
+          <%=link_to "https://github.com/jorgeants/IndevaTestApp" do%>
+            <span class="glyphicon glyphicon-folder-open"></span> App Repository</a>
+          <%end-%>
+        </li>
+        <li>
+          <%=link_to destroy_user_session_path, :method => :delete do%>
+            <span class="glyphicon glyphicon-off"></span> Logout</a>
+          <%end-%>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+
+</div>
+<% end %>
